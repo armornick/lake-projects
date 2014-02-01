@@ -1,0 +1,6 @@
+-- in this case, we'll assume that the Lua core has always been statically linked
+-- against linenoise
+
+return luabuild.library{'linenoise',src='linenoise',
+    incdir = path.quote(PWD..'linenoise') -- PWD is luabuild directory
+}

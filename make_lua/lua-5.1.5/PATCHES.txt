@@ -1,0 +1,16 @@
+Used patches:
+http://lua-users.org/files/wiki_insecure/power_patches/5.1/jh-lua-iter-5.1.4.patch
+http://lua-users.org/files/wiki_insecure/power_patches/5.1/basic-from.patch
+
+https://github.com/dubiousjim/luafiveq/blob/master/patches/table-len.patch
+
+- - -
+Custom Patches
+==============
+no-arg execute 
+--------------
+a '!' can be used to execute a function with no arguments
+
+lparser.c : funcargs
+lparser.c : primaryexp
+

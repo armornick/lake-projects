@@ -1,0 +1,4 @@
+----- building socket/core -----
+SOURCE = 'mymod'
+
+return luabuild.library {'mymod',src=SOURCE}

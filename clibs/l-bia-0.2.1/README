@@ -1,0 +1,69 @@
+
+= Overview =
+
+Lua Built-In program (L-Bia) is a self-running Lua interpreter. It turns
+your Lua program with all required modules (either Lua or C libraries)
+and an interpreter into a single stand-alone program.
+
+L-Bia makes the things simpler. First because you don't need to distribute
+may files. Last because you can run the resulting program directly, in any
+computer from any media (flopies, CD-ROMs, USB sticks or other), without
+installing it or have any prior software installed.
+
+= Availability =
+
+L-Bia is freely available under the terms of GNU General Public License.
+Contrary to popular belief, it can be used in comercial software! See
+[LICENSE license.html] for details. The latest version of L-Bia can be
+downloaded from its [LuaForge http://luaforge.net/projects/l-bia/files/]
+page.
+
+= Build and Install =
+
+If you're using the usual Unix tools, in most cases you can just type
+``make``. This will compile everything with the default options. To
+change the options, modify or include C/C++ user code edit Makefile
+and/or lbconf.h.
+
+If you're on Windows or other systems without the usual Unix tools, then
+the instructions for building L-Bia depend on the compiler you use. You'll
+need to create projects (or whatever your compiler uses) for building the
+library (``lbaux.dll`` on Windows) and the program (``l-bia.exe`` on
+Windows), as follows:
+
+```
+library: lbaux.c minilzo.c
+
+program: l-bia.c minilzo.c
+```
+
+Then run l-bia on l-bia this way:
+``lua l-bia.lua -i program l-bia.lua``.
+
+As L-Bia uses L-Bia, it needs no installation at all. You don't need library
+any more. The only file needed to use the program is ``l-bia`` executable
+(``l-bia.exe`` on Windows). If you want to "install" L-Bia on the system, just
+copy it to a system PATH directory.
+
+= How do I use it? =
+
+Just type ``l-bia hello.lua`` for each program you want to turn into a
+stand-alone program. It will create a ``hello`` executable (``hello.exe``
+on Windows) ready to use. Of course you can use any name instead of //hello//.
+
+If your script uses modules, you must run L-Bia for main script only. L-Bia
+automatically search for all require'd modules and include then. There is no
+need for ``l-bia *.lua``.
+
+The command-line arguments passed to your stand-alone program will be
+available in a table called "arg" and also as "...".
+
+Type ``l-bia`` with no arguments, to see a list of command-line options
+and a brief help about it.
+
+= Thanks =
+
+Thanks to **Waldemar Celes** and **Luiz Henrique de Figueiredo**, the autors
+of Lua, for portions of code I used in L-Bia. Tanks also to
+**Markus Franz Xaver Johannes Oberhumer** for miniLZO - mini subset of the
+LZO real-time data compression library.

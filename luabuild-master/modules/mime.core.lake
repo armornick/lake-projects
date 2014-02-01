@@ -1,0 +1,5 @@
+----- building mime/core -----
+
+luabuild.lua('mime')
+
+return luabuild.library {'mime/core',src='mime'}

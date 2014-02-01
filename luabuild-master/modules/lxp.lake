@@ -1,0 +1,8 @@
+if not find.include_path 'expat.h' then
+    quit("luaexpat: cannot find expat.h; need to install libexpat-dev")
+end
+
+luabuild.lua('lxp/lom.lua','lxp')
+luabuild.test 'test-driver.lua'
+
+return luabuild.library{'lxp',src='lxplib',libs='expat'}

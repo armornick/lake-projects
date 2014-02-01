@@ -1,0 +1,7 @@
+name = "lua52"
+srlua = "srlua"
+no_lua51_compat = false
+build_shared = false
+OPTIMIZE = "O2"
+readline = false
+include = "lfs lpeg  winapi "

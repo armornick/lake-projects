@@ -1,0 +1,8 @@
+L-Bia History
+Breno Ramalho Lemes
+%%mtime(%B %d, %Y) (version 0.2.1)
+
+%!includeconf: ../config
+%!include(html): ''lbtopbar.html''
+
+%!include: ../../HISTORY

@@ -1,0 +1,4 @@
+luabuild.lua 're'
+luabuild.test 'test.lua'
+
+return luabuild.library{'lpeg',src='*'}
