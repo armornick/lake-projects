@@ -1,7 +1,9 @@
 
 local join, append = path.join, table.insert
 local projects = {}
+
 cpp.defaults { static=true, odir='bin' }
+cpp11.defaults { static=true, odir='bin' }
 
 ------------------------------------------
 -- DLIB
@@ -17,6 +19,7 @@ local dlib = cpp.library{'dlib', src=DLIB_SRC, needs='windows sockets', odir='li
 local STLPLUS_DIR = 'stlplus3-03-11'
 local STLPLUS_INCDIR = STLPLUS_DIR
 local stlpport = cpp.library{'portability', src=join(STLPLUS_DIR,'portability','*'), needs='sockets', odir='lib/stlplus'}
+local stlpstr = cpp.library{'strings', src=join(STLPLUS_DIR,'strings','*'), defines='NO_STLPLUS_INF NO_STLPLUS_CONTAINERS', odir='lib/stlplus'}
 
 ------------------------------------------
 -- BOOST
@@ -31,12 +34,12 @@ local boostfs = cpp.library {'filesystem', src={join(BOOST_SRCDIR,'system','src'
 -- Helper functions
 ------------------------------------------
 function application ( args )
-	local p = cpp.program(args)
+	local p = cpp11.program(args)
 	append(projects, p)
 end
 
 function stlplus_app ( args )
-	args.deps = stlpport
+	args.deps = {stlpport, stlpstr}
 	args.incdir = STLPLUS_INCDIR
 	application(args)
 end
@@ -61,6 +64,8 @@ application {'stlplus_ls', src='src/stlplus_ls', deps=stlpport, incdir=STLPLUS_I
 stlplus_app {'stlplus_ls_io', src='src/stlplus_ls_io'}
 dlib_app {'dlib_ls', src='src/dlib_ls'}
 boost_app {'boost_ls', src='src/boost_ls'}
+
+stlplus_app {'stringworks', src='src/stringworks'}
 
 application {'readlines', src='src/readlines'}
 
