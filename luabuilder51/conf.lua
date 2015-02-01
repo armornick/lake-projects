@@ -8,9 +8,9 @@ SRLUA = true
 --------------------------------------
 -- link to dynamic lua library?
 --------------------------------------
-DYNAMIC = false
+DYNAMIC = true
 
 --------------------------------------
 -- libraries to preload
 --------------------------------------
-MODULES = {'lfs', 'winapi'}
+MODULES = {'lfs', 'winapi', 'sys', 'lpeg'}
